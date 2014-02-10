@@ -1,4 +1,8 @@
 CbInterface::Application.routes.draw do
+  get "base/home"
+  get "base/search"
+  get "base/product"
+  get "base/company"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
