@@ -37,6 +37,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'capybara'
+  gem 'poltergeist'
   gem 'simplecov', :require => false
   gem 'growl'
 end

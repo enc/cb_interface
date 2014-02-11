@@ -1,2 +1,10 @@
 %h1 Base#home
-%p Find me in app/views/base/home.html.haml
+%p Search
+.row
+  .span9
+    = form_tag "/search", role: "form", class: "form-inline" do
+      .form-group
+        =label_tag :term, "Search Term"
+        =text_field_tag :term
+      =submit_tag "Search", class: "btn btn-default"
+
