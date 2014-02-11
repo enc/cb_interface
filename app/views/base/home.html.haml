@@ -8,3 +8,10 @@
         =text_field_tag :term
       =submit_tag "Search", class: "btn btn-default"
 
+.row
+  .span6
+    -if @complist
+      %h2 Companies
+  .span6
+    -if @prodlist
+      %h2 Products

@@ -5,6 +5,7 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
+Cbapi::API.key = 'vtbn6ju62cp2apg9mjmuva86'
 
 module CbInterface
   class Application < Rails::Application
