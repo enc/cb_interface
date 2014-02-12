@@ -1,2 +1,22 @@
-%h1 Base#company
-%p Find me in app/views/base/company.html.haml
+.row
+  .col-md-6
+    .row
+      .col-md-3
+        %h1
+        Company
+        = @company.name
+      .col-md-4
+        - if @company.images
+          = image_tag @company.images[@company.images.size-1]
+    .row
+      %dl
+        %dt Overview
+        %dd!= @company.overview
+
+        %dt Curchbase Url
+        %dd= link_to @company.name, @company.crunchbase_url
+  .col-md-6
+    %h2 People
+    %ul
+      =render partial: 'person', collection: @company.people
+

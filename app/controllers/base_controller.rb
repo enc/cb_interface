@@ -17,8 +17,12 @@ class BaseController < ApplicationController
   end
 
   def product
+    @product = Cbapi::Product.new
+    @product.get(params[:product])
   end
 
   def company
+    @company = Cbapi::Company.new
+    @company.get(params[:company])
   end
 end

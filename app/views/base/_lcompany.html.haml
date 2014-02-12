@@ -1,0 +1,9 @@
+%li
+  .card.list-group
+    .list-group-item
+      - if lcompany['smimg']
+        %img{src: lcompany['smimg']}
+      - else
+        %strong No Image
+    = link_to which_name(lcompany), base_company_path(company: lcompany['permalink']), class: 'list-group-item'
+    .list-group-item= lcompany['description']

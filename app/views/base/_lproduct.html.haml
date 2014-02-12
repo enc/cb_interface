@@ -1,0 +1,8 @@
+%li
+  .card.list-group
+    .list-group-item
+      - if lproduct['smimg']
+        %img{src: lproduct['smimg']}
+      - else
+        %strong No Image
+    = link_to which_name(lproduct), base_product_path(product: lproduct['permalink']), class: "list-group-item"
