@@ -9,7 +9,7 @@ class BaseController < ApplicationController
       return
     end
     @cpage = 1
-    comp = Cbapi::Company.new
+    comp = Cbapi::Search.new
 
     @cpage = params[:cpage].to_i if params.key? :cpage
     @rlist = comp.search params[:term], @cpage
