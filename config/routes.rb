@@ -1,6 +1,6 @@
 CbInterface::Application.routes.draw do
   get "base/home"
-  post "/search" => 'base#search'
+  match "/search" => 'base#search', via: [:get, :post]
   get "base/product"
   get "base/company"
   # The priority is based upon order of creation: first created -> highest priority.

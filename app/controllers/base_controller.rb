@@ -4,6 +4,10 @@ class BaseController < ApplicationController
 
   def search
 
+    unless params[:term]
+      redirect_to action: 'home'
+      return
+    end
     @cpage = 1
     comp = Cbapi::Company.new
 
@@ -11,6 +15,7 @@ class BaseController < ApplicationController
     @rlist = comp.search params[:term], @cpage
     @csize = comp.size
 
+    flash[:notice] = "No Results found." if @rlist.size == 0
     @complist = @rlist.select { |i| i['namespace'] == "company" }
     @prodlist = @rlist.select { |i| i['namespace'] == "product" }
     render action: 'home'
