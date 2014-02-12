@@ -1,2 +1,21 @@
-%h1 Base#product
-%p Find me in app/views/base/product.html.haml
+.row
+  .col-md-6
+    .row
+      .col-md-3
+        %h1
+        Product
+        = @product.name
+      .col-md-4
+        - if @product.images
+          = image_tag @product.images[@product.images.size-1]
+    .row
+      %dl
+        %dt Overview
+        %dd!= @product.overview
+
+        %dt Curchbase Url
+        %dd= link_to @product.name, @product.crunchbase_url
+  .col-md-6
+    %h2 Milstones
+    %ul
+      =render partial: 'milestone', collection: @product.milestones

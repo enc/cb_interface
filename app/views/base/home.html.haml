@@ -8,3 +8,33 @@
         =text_field_tag :term
       =submit_tag "Search", class: "btn btn-default"
 
+-if flash[:notice]
+  .row
+    .col-md-3.col-md-offset-4
+      .alert.alert-warning
+        = flash[:notice]
+-if params[:term]
+  .row
+    .col-md-3.col-md-offset-3
+      %h4= "Search for " + params[:term]
+  .row
+    .col-md-6
+      -if @complist
+        %h2 Companies
+        %ul
+          = render partial: "lcompany", collection: @complist
+
+    .col-md-6
+      -if @prodlist
+        %h2 Products
+        %ul
+          = render partial: "lproduct", collection: @prodlist
+  .row
+    .col-md-3.col-md-offset-4
+      %ul.pager
+        - unless @cpage == 1
+          %li.previous
+            = link_to "Previous", search_path(term: params[:term], cpage: @cpage -1), method: 'post'
+        - unless @cpage*10 >= @csize
+          %li.next
+            = link_to "Next", search_path(term: params[:term], cpage: @cpage +1), method: 'post'
