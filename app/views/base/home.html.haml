@@ -1,5 +1,3 @@
-%h1 Base#home
-%p Search
 .row
   .col-md-9
     = form_tag "/search", role: "form", class: "form-inline" do
@@ -15,19 +13,22 @@
         = flash[:notice]
 -if params[:term]
   .row
-    .col-md-3.col-md-offset-3
-      %h4= "Search for " + params[:term]
+    .col-md-3.col-md-offset-5
+      .alert.alert-info
+        Search for
+        %strong
+          = params[:term]
   .row
     .col-md-6
       -if @complist
         %h2 Companies
-        %ul
+        %ul.list-unstyled
           = render partial: "lcompany", collection: @complist
 
     .col-md-6
       -if @prodlist
         %h2 Products
-        %ul
+        %ul.list-unstyled
           = render partial: "lproduct", collection: @prodlist
   .row
     .col-md-3.col-md-offset-4

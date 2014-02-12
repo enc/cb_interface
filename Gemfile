@@ -42,7 +42,7 @@ group :development, :test do
   gem 'growl'
 end
 
-gem 'cbapi', :path => '../cbapi'
+gem 'cbapi', :github => 'enc/cbapi'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
