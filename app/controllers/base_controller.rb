@@ -4,10 +4,15 @@ class BaseController < ApplicationController
 
   def search
 
+    @cpage = 1
     comp = Cbapi::Company.new
-    prod = Cbapi::Product.new
-    @complist = comp.search params[:term]
-    @prodlist = prod.search params[:term]
+
+    @cpage = params[:cpage].to_i if params.key? :cpage
+    @rlist = comp.search params[:term], @cpage
+    @csize = comp.size
+
+    @complist = @rlist.select { |i| i['namespace'] == "company" }
+    @prodlist = @rlist.select { |i| i['namespace'] == "product" }
     render action: 'home'
   end
 
